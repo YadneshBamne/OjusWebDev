@@ -98,7 +98,7 @@ document.addEventListener('click', (e) => {
 });
 document.addEventListener("DOMContentLoaded", () => {
     const scroll = new LocomotiveScroll({
-        el: document.querySelector("[data-scroll-container]"),
+        el: document.querySelector("#container"),
         smooth: true,
     });
 });;
