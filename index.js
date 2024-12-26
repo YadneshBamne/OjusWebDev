@@ -1,103 +1,51 @@
-const team = [
-    { name: "Yadnesh Bamne", role: "frontend" },
-    { name: "Bharat Sharma", role: "Backend/Frontend" },
-    { name: "Anisha", role: "frontend" },
-    { name: "Yash Baviskar", role: "Backend" },
-];
+document.addEventListener("DOMContentLoaded", () => {
+    const team = [
+        { name: "Yadnesh Bamne", role: "Frontend" },
+        { name: "Bharat Sharma", role: "Backend/Frontend" },
+        { name: "Yash Baviskar", role: "Backend" },
+        { name: "Anisha", role: "Frontend" },
+    ];
 
-const cursor = document.querySelector('.cursor');
-const cursorIcon = document.querySelector('i');
+    const cursor = document.querySelector(".cursor");
+    const cursorIcon = cursor.querySelector("i");
+    const modalImages = document.querySelectorAll(".modal-images .img");
+    const infoName = document.querySelector(".info .name");
+    const infoRole = document.querySelector(".info .role");
+    let currentSlide = 1;
 
-if (!cursor || !cursorIcon) {
-    console.error('Cursor or cursorIcon element is missing.');
-}
+    const updateSlide = (index) => {
+        modalImages.forEach((img, i) => {
+            img.style.display = i === index - 1 ? "block" : "none";
+        });
 
-const cursorWidth = cursor ? cursor.getBoundingClientRect().width / 2 : 0;
-const cursorHeight = cursor ? cursor.getBoundingClientRect().height / 2 : 0;
+        infoName.textContent = team[index - 1].name;
+        infoRole.textContent = team[index - 1].role;
+    };
 
-let currentSlide = 1;
-const totalSlides = team.length;
+    updateSlide(currentSlide);
 
-const updateCursorClass = (xPosition) => {
-    const halfPageWidth = window.innerWidth / 2;
-    if (xPosition > halfPageWidth) {
-        if (currentSlide < totalSlides) {
-            cursorIcon.classList.remove('ph-arrow-left');
-            cursorIcon.classList.add('ph-arrow-right');
-            cursor.style.display = '';
-        } else {
-            cursor.style.display = 'none';
-        }
-    } else {
-        if (currentSlide > 1) {
-            cursorIcon.classList.remove('ph-arrow-right');
-            cursorIcon.classList.add('ph-arrow-left');
-            cursor.style.display = '';
-        } else {
-            cursor.style.display = 'none';
-        }
-    }
-};
-
-document.addEventListener('mousemove', (e) => {
-    gsap.to(cursor, {
-        x: e.clientX - cursorWidth,
-        y: e.clientY - cursorHeight,
-        duration: 0.3,
-        ease: "power3.out",
+    document.addEventListener("mousemove", (e) => {
+        gsap.to(cursor, {
+            x: e.clientX,
+            y: e.clientY,
+            duration: 0.1,
+        });
     });
-    updateCursorClass(e.clientX);
+
+    document.addEventListener("click", (e) => {
+        const isRight = e.clientX > window.innerWidth / 2;
+
+        if (isRight && currentSlide < team.length) {
+            currentSlide++;
+        } else if (!isRight && currentSlide > 1) {
+            currentSlide--;
+        }
+
+        updateSlide(currentSlide);
+    });
+
+    // Lazy load images
+    modalImages.forEach((img) => {
+        img.style.backgroundImage = `url(${img.dataset.src})`;
+    });
 });
-
-const updateInfo = (slideNumber) => {
-    const member = team[slideNumber - 1];
-    document.querySelector('.info .name').textContent = member.name;
-    document.querySelector('.info .role').textContent = member.role;
-};
-
-const animateSlide = (slideNumber, reveal) => {
-    const marquee = document.querySelector(`.t-${slideNumber}.marquee-wrapper`);
-    const img = document.getElementById(`t-${slideNumber}`);
-    if (!marquee || !img) {
-        console.error(`Slide ${slideNumber} elements not found.`);
-        return;
-    }
-    const clipPathValue = reveal
-        ? 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)'
-        : 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)';
-
-    gsap.to(marquee, { clipPath: clipPathValue, duration: 2, ease: "power4.out", delay: 0.3 });
-    gsap.to(img, { clipPath: clipPathValue, duration: 1, ease: "power4.out" });
-};
-
-updateInfo(currentSlide);
-
-const handleRightClick = () => {
-    if (currentSlide < totalSlides) {
-        animateSlide(currentSlide + 1, true);
-        currentSlide++;
-        updateInfo(currentSlide);
-    }
-};
-
-const handleLeftClick = () => {
-    if (currentSlide > 1) {
-        animateSlide(currentSlide, false);
-        currentSlide--;
-        updateInfo(currentSlide);
-    }
-};
-
-document.addEventListener('click', (e) => {
-    const halfPageWidth = window.innerWidth / 2;
-    if (e.clientX > halfPageWidth) {
-        handleRightClick();
-    } else {
-        handleLeftClick();
-    }
-});
-const scroll = new LocomotiveScroll({
-    el: document.querySelector('#container'),
-    smooth: true
-  });
-  
