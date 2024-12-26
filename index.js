@@ -96,8 +96,10 @@ document.addEventListener('click', (e) => {
         handleLeftClick();
     }
 });
-const scroll = new LocomotiveScroll({
-    el: document.querySelector('#container'),
-    smooth: true
-  });
+document.addEventListener("DOMContentLoaded", () => {
+    const scroll = new LocomotiveScroll({
+        el: document.querySelector("[data-scroll-container]"),
+        smooth: true,
+    });
+});;
   
