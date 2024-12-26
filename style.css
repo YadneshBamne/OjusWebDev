@@ -218,7 +218,7 @@ h1 {
 }
 
 
-a{
+a.no-underline {
     text-decoration: none;
-    color: black;
 }
+
