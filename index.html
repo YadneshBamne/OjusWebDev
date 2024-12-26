@@ -5,61 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
-    <title>Document</title>
+    <title>Team Showcase</title>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
     <nav>
         <a href="https://sportslandingpage-b9sk.vercel.app/" class="no-underline">
-    <div class="logo"><p>Back</p></div>
-</a>
-        <div class="btn"><p>Ojus WebDev</p></div>
+            <div class="logo">Back</div>
+        </a>
+        <div class="btn">Ojus WebDev</div>
     </nav>
-    <div class="container">
+    <div class="container" id="container">
         <div class="overlay">
-            <div class="t-1 marquee-wrapper">
-                <h1>Yadnesh Bamne Yadnesh Bamne Yadnesh Bamne</h1>
+            <div class="marquee-wrapper" data-slide="1">
+                <h1>Yadnesh Bamne</h1>
             </div>
-            <div class="t-2 marquee-wrapper">
-                <h1>Bharat Bharat Bharat Bharat Bharat Bharat</h1>
+            <div class="marquee-wrapper" data-slide="2">
+                <h1>Bharat</h1>
             </div>
-            <div class="t-3 marquee-wrapper">
-                <h1>Yash Yash Yash Yash Yash Yash</h1>
+            <div class="marquee-wrapper" data-slide="3">
+                <h1>Yash</h1>
             </div>
-            <div class="t-4 marquee-wrapper">
-                <h1>Anisha Anisha Anisha Anisha Anisha</h1>
-                
+            <div class="marquee-wrapper" data-slide="4">
+                <h1>Anisha</h1>
             </div>
         </div>
-
         <div class="modal">
             <div class="modal-images">
-                <div class="img" id="t-1">
-                    <img src="https://res.cloudinary.com/dyhby7bo9/image/upload/v1735216545/efa3htl6c24kg4rc9ftn.jpg" alt="">
-                </div>
-                <div class="img" id="t-2">
-                    <img src="https://res.cloudinary.com/dyhby7bo9/image/upload/v1735216545/twzmios6y73nbaetcmaj.jpg" alt="">
-                </div>
-                <div class="img" id="t-3">
-                    <img src="https://res.cloudinary.com/dyhby7bo9/image/upload/v1735216545/ocouxypeqxx9xo8vnotq.jpg" alt="">
-                </div>
-                <div class="img" id="t-4">
-                    <img src="https://res.cloudinary.com/dyhby7bo9/image/upload/v1735216545/ocouxypeqxx9xo8vnotq.jpg" alt="">
-                </div>
-            </div> 
-
+                <div class="img lazy" id="t-1" data-src="https://res.cloudinary.com/dyhby7bo9/image/upload/v1735216545/efa3htl6c24kg4rc9ftn.jpg"></div>
+                <div class="img lazy" id="t-2" data-src="https://res.cloudinary.com/dyhby7bo9/image/upload/v1735216545/twzmios6y73nbaetcmaj.jpg"></div>
+                <div class="img lazy" id="t-3" data-src="https://res.cloudinary.com/dyhby7bo9/image/upload/v1735216545/ocouxypeqxx9xo8vnotq.jpg"></div>
+                <div class="img lazy" id="t-4" data-src="https://res.cloudinary.com/dyhby7bo9/image/upload/v1735216545/ocouxypeqxx9xo8vnotq.jpg"></div>
+            </div>
             <div class="info">
                 <p class="name">Yadnesh Bamne</p>
                 <p class="role">Frontend</p>
             </div>
         </div>
-
         <div class="cursor">
             <i class="ph-light ph-arrow-left"></i>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
 </body>
 </html>
