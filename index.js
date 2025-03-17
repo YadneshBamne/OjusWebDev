@@ -3,6 +3,8 @@ const team = [
     { name: "Bharat Sharma", role: "Backend/Frontend" },
     { name: "Anisha", role: "frontend" },
     { name: "Yash Baviskar", role: "Backend" },
+    { name: "Aditya Singh", role: "Volunteer" },
+    { name: "Lucky Sharma", role: "Volunteer" },
 ];
 
 const cursor = document.querySelector('.cursor');

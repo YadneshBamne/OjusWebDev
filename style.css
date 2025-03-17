@@ -130,6 +130,14 @@ h1 {
     background: #8e908a;
 }
 
+
+.t-5 {
+    background: #e5ecd7;
+}
+.t-6 {
+    background: #6d6f69;
+}
+
 @media (max-width: 900px) {
     .modal {
         width: 400px;
